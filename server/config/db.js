@@ -7,5 +7,5 @@ export default () => {
   mongoose.connect(DB_URL)
   mongoose.connection
     .once('open', () => console.log('mongoose running'))
-    .on('error', err => console.error('err'))
+    .on('error', err => console.error(err))
 }

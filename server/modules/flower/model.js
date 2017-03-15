@@ -16,6 +16,6 @@ const FlowerSchema = new Schema({
     type: String,
     default: ''
   }
-})
+}, { timestamps: true })
 
 export default mongoose.model('Flower', FlowerSchema)
