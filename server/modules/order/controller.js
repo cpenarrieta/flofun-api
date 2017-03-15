@@ -16,7 +16,7 @@ export const createOrder = async (req, res) => {
 export const getAllOrders = async (req, res) => {
   try {
     return res.status(200)
-              .json({ orders: await Order.find({})})
+              .json({ orders: await Order.find({}) })
   } catch (e) {
     return res.status(e.status)
               .json({ error: true, message: 'error getAllOrder' })

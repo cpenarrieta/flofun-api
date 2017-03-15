@@ -16,7 +16,7 @@ export const createFlower = async (req, res) => {
 export const getAllFlower = async (req, res) => {
   try {
     return res.status(200)
-              .json({ flowers: await Flower.find({})})
+              .json({ flowers: await Flower.find({}) })
   } catch (e) {
     return res.status(e.status)
               .json({ error: true, message: 'error getAllFlower' })
