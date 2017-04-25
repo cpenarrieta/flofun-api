@@ -3,20 +3,20 @@ import mongoose, { Schema } from 'mongoose'
 const OrderSchema = new Schema({
   address: {
     type: String,
-    required: true
+    required: true,
   },
   price: {
     type: Number,
-    required: true
+    required: true,
   },
   phone: {
     type: String,
-    required: true
+    required: true,
   },
   flowers: [{
     type: Schema.Types.ObjectId,
-    ref: 'Flower'
-  }]
+    ref: 'Flower',
+  }],
 }, { timestamps: true })
 
 export default mongoose.model('Order', OrderSchema)

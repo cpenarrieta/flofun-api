@@ -3,34 +3,34 @@ import mongoose, { Schema } from 'mongoose'
 const StoreSchema = new Schema({
   title: {
     type: String,
-    required: true
+    required: true,
   },
   address: {
-    type: String
+    type: String,
   },
   storeCoordinates: {
     latitude: {
       type: String,
-      required: true
+      required: true,
     },
     longitude: {
       type: String,
-      required: true
+      required: true,
     },
   },
   shippingRegion: [{
     latitude: {
       type: String,
-      required: true
+      required: true,
     },
     longitude: {
       type: String,
-      required: true
+      required: true,
     },
   }],
   flowers: [{
     type: Schema.Types.ObjectId,
-    ref: 'Flower'
+    ref: 'Flower',
   }],
 }, { timestamps: true })
 

@@ -3,19 +3,19 @@ import mongoose, { Schema } from 'mongoose'
 const FlowerSchema = new Schema({
   title: {
     type: String,
-    required: true
+    required: true,
   },
   description: {
-    type: String
+    type: String,
   },
   price: {
     type: Number,
-    required: true
+    required: true,
   },
   image: {
     type: String,
-    default: ''
-  }
+    default: '',
+  },
 }, { timestamps: true })
 
 export default mongoose.model('Flower', FlowerSchema)
