@@ -4,7 +4,8 @@ import middlewareConfig from './config/middleware'
 import {
   FlowerRoutes,
   OrderRoutes,
-  UserRoutes
+  UserRoutes,
+  StoreRoutes,
 } from './modules'
 
 const app = express()
@@ -16,7 +17,8 @@ middlewareConfig(app)
 app.use('/api', [
   FlowerRoutes,
   OrderRoutes,
-  UserRoutes
+  UserRoutes,
+  StoreRoutes,
 ])
 
 const PORT = process.env.PORT || 8080
