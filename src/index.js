@@ -23,6 +23,7 @@ app.use('/api', [
 
 const PORT = process.env.PORT || 8080
 
+/* eslint-disable no-console */
 app.listen(PORT, err => {
   if (err) {
     console.error(err)
