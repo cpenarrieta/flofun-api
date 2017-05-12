@@ -5,20 +5,24 @@ export const createUser = async (req, res) => {
   const newUser = new User({ title, description, price, image })
 
   try {
-    return res.status(201)
-              .json({ user: await newUser.save() })
+    return res
+      .status(201)
+      .json({ user: await newUser.save() })
   } catch (e) {
-    return res.status(e.status)
-              .json({ error: true, message: 'error creating user' })
+    return res
+      .status(e.status)
+      .json({ error: true, message: 'error creating user' })
   }
 }
 
 export const getAllUsers = async (req, res) => {
   try {
-    return res.status(200)
-              .json({ users: await User.find({}) })
+    return res
+      .status(200)
+      .json({ users: await User.find({}) })
   } catch (e) {
-    return res.status(e.status)
-              .json({ error: true, message: 'error getAllUser' })
+    return res
+      .status(e.status)
+      .json({ error: true, message: 'error getAllUser' })
   }
 }

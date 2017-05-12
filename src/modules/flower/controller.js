@@ -5,20 +5,24 @@ export const createFlower = async (req, res) => {
   const newFlower = new Flower({ title, description, price, image })
 
   try {
-    return res.status(201)
-              .json({ flower: await newFlower.save() })
+    return res
+      .status(201)
+      .json({ flower: await newFlower.save() })
   } catch (e) {
-    return res.status(e.status)
-              .json({ error: true, message: 'error creating flower' })
+    return res
+      .status(e.status)
+      .json({ error: true, message: 'error creating flower' })
   }
 }
 
 export const getAllFlower = async (req, res) => {
   try {
-    return res.status(200)
-              .json({ flowers: await Flower.find({}) })
+    return res
+      .status(200)
+      .json({ flowers: await Flower.find({}) })
   } catch (e) {
-    return res.status(e.status)
-              .json({ error: true, message: 'error getAllFlower' })
+    return res
+      .status(e.status)
+      .json({ error: true, message: 'error getAllFlower' })
   }
 }
