@@ -1,10 +1,12 @@
 import { Router } from 'express'
+
 import * as FlowerController from './controller'
+import { requireJwtAuth } from '../auth/requireJwtAuth'
 
 const routes = new Router()
 
 routes.route('/flower')
-  .get(FlowerController.getAllFlower)
-  .post(FlowerController.createFlower)
+  .get(requireJwtAuth, FlowerController.getAllFlower)
+  .post(requireJwtAuth, FlowerController.createFlower)
 
 export default routes
