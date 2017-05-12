@@ -13,6 +13,7 @@
     "lint:fix": "eslint --fix src"
   },
   "dependencies": {
+    "axios": "^0.16.1",
     "body-parser": "^1.17.1",
     "express": "^4.15.2",
     "jsonwebtoken": "^7.4.0",
