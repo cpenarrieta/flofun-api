@@ -15,14 +15,14 @@
   "dependencies": {
     "body-parser": "^1.17.1",
     "express": "^4.15.2",
-    "mongoose": "^4.9.6",
+    "mongoose": "^4.9.8",
     "morgan": "^1.8.1"
   },
   "devDependencies": {
     "babel-plugin-transform-object-rest-spread": "^6.23.0",
     "babel-preset-env": "^1.4.0",
     "eslint": "^3.19.0",
-    "eslint-config-equimper": "^1.6.3",
+    "eslint-config-equimper": "^1.6.4",
     "nodemon": "^1.11.0",
     "rimraf": "^2.6.1"
   }
