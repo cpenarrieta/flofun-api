@@ -1,22 +1,20 @@
 export function getUserInfo(data, provider) {
-  let fullName
+  let name
   let avatar
 
   if (provider === 'google') {
-    fullName = `${data.given_name} ${data.family_name}`
+    name = `${data.given_name} ${data.family_name}`
     avatar = data.picture
   } else if (provider === 'facebook') {
-    fullName = data.name
+    name = data.name
     avatar = data.picture.data.url
   }
 
   return {
-    fullName,
+    providerId: data.id,
+    name,
     avatar,
     email: data.email,
-    providerData: {
-      uid: data.id,
-      provider,
-    },
+    provider,
   }
 }
