@@ -26,3 +26,13 @@ export const getAllUsers = async (req, res) => {
       .json({ error: true, message: 'error getAllUser' })
   }
 }
+
+export const me = (req, res) => res.status(200)
+  .json({
+    _id: req.user._id,
+    name: req.user.name,
+    avatar: req.user.avatar,
+    provider: req.user.provider,
+    email: req.user.email,
+    phone: req.user.phone,
+  })

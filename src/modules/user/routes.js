@@ -2,13 +2,16 @@ import { Router } from 'express'
 
 import * as UserController from './userController'
 import * as AuthController from './authController'
-// import { requireJwtAuth } from '../auth/requireJwtAuth'
+import { requireJwtAuth } from '../auth/requireJwtAuth'
 
 const routes = new Router()
 
 routes.route('/user')
   .get(UserController.getAllUsers)
   .post(UserController.createUser)
+
+routes.route('/me')
+  .post(requireJwtAuth, UserController.me)
 
 routes.route('/auth/facebook')
   .post(AuthController.authFacebook)

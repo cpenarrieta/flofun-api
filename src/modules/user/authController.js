@@ -30,7 +30,7 @@ const auth = async (token, res, callback) => {
         phone: user.phone,
         avatar: user.avatar,
       },
-      token: createToken(user),
+      token: `JWT ${createToken(user)}`,
     })
   } catch (err) {
     return res.status(400).json({ error: true, errorMessage: err.message })
