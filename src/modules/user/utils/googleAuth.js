@@ -9,6 +9,6 @@ export async function googleAuth(token) {
     })
     return getUserInfo(data, 'google')
   } catch (err) {
-    return err
+    throw new Error('error with google auth')
   }
 }
