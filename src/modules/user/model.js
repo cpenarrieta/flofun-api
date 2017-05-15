@@ -21,6 +21,12 @@ const UserSchema = new Schema({
   avatar: {
     type: String,
   },
+  code: {
+    type: Number,
+  },
+  codeValid: {
+    type: Boolean,
+  },
   orders: [{
     type: Schema.Types.ObjectId,
     ref: 'Order',

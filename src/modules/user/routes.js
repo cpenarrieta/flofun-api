@@ -19,5 +19,7 @@ routes.route('/auth/google')
   .post(AuthController.authGoogle)
 routes.route('/auth/phone')
   .post(AuthController.authPhone)
+routes.route('/auth/validateCode')
+  .post(AuthController.validateCode)
 
 export default routes
