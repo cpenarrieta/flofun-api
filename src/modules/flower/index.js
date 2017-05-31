@@ -1,3 +1,3 @@
-import FlowerRoutes from './routes'
+import FlowerRoutes from './flower.routes'
 
 export { FlowerRoutes }

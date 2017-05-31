@@ -1,4 +1,4 @@
-import Order from './model'
+import Order from './order.model'
 
 export const createOrder = async (req, res) => {
   const { title, description, price, image } = req.body

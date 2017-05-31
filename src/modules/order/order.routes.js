@@ -1,6 +1,6 @@
 import { Router } from 'express'
 
-import * as OrderController from './controller'
+import * as OrderController from './order.controller'
 import { requireJwtAuth } from '../auth/requireJwtAuth'
 
 const routes = new Router()

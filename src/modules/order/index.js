@@ -1,3 +1,3 @@
-import OrderRoutes from './routes'
+import OrderRoutes from './order.routes'
 
 export { OrderRoutes }

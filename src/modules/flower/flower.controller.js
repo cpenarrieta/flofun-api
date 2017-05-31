@@ -1,4 +1,4 @@
-import Flower from './model'
+import Flower from './flower.model'
 
 export const createFlower = async (req, res) => {
   const { title, description, price, image } = req.body

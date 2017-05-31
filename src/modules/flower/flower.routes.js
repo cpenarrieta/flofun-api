@@ -1,6 +1,6 @@
 import { Router } from 'express'
 
-import * as FlowerController from './controller'
+import * as FlowerController from './flower.controller'
 import { requireJwtAuth } from '../auth/requireJwtAuth'
 
 const routes = new Router()

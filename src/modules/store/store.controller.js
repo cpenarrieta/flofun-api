@@ -1,4 +1,4 @@
-import Store from './model'
+import Store from './store.model'
 
 export const createStore = async (req, res) => {
   const { title, address, storeCoordinates, shippingRegion, flowers } = req.body
