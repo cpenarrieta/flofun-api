@@ -1,4 +1,4 @@
-import User from './model'
+import User from './user.model'
 import { createToken } from '../auth/createToken'
 import { facebookAuth } from './utils/facebookAuth'
 import { googleAuth } from './utils/googleAuth'

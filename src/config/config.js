@@ -21,13 +21,14 @@ function envConfig(env) {
     case 'production':
       return prodConfig
     default:
-      return devConfig;
+      return devConfig
   }
 }
 
 const config = {
   PORT: process.env.PORT || 8080,
   DB_URL: process.env.DB_URL || 'mongodb://localhost/flofun',
+  MONGOOSE_DEBUG: true,
   JWT_SECRET: process.env.JWT_SECRET || secrets.JWT_SECRET,
   twilio: {
     accountSid: process.env.TWILIO_SID || secrets.accountSid,

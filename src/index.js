@@ -1,5 +1,5 @@
 import express from 'express'
-import dbConfig from './config/db'
+import './config/db'
 import config from './config/config'
 import middlewareConfig from './config/middleware'
 import {
@@ -11,8 +11,6 @@ import {
 
 const app = express()
 
-dbConfig()
-
 middlewareConfig(app)
 
 app.use('/api', [
@@ -22,15 +20,19 @@ app.use('/api', [
   StoreRoutes,
 ])
 
-/* eslint-disable no-console */
-app.listen(config.PORT, err => {
-  if (err) {
-    console.error(err)
-  } else {
-    console.log(`
-      Server running on port: ${config.PORT}
-      Running on ${process.env.NODE_ENV}
-      ---
-    `)
-  }
-})
+if (!module.parent) {
+  /* eslint-disable no-console */
+  app.listen(config.PORT, err => {
+    if (err) {
+      console.error(err)
+    } else {
+      console.log(`
+        Server running on port: ${config.PORT}
+        Running on ${process.env.NODE_ENV}
+        ---
+      `)
+    }
+  })
+}
+
+export default app
