@@ -11,7 +11,7 @@
     "clean": "rimraf dist && rimraf node_modules",
     "lint": "eslint src",
     "lint:fix": "eslint --fix src",
-    "test": "mocha $(find __tests__ -name *.test.js) --colors --compilers js:babel-register"
+    "test": "NODE_ENV=test mocha $(find __tests__ -name *.test.js) --colors --compilers js:babel-register"
   },
   "dependencies": {
     "axios": "0.16.1",
