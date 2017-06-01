@@ -1,8 +1,25 @@
+import Joi from 'joi'
+
 import User from './user.model'
 
+export const validation = {
+  createUser: {
+    body: {
+      providerId: Joi.string().required(),
+      provider: Joi.string().required(),
+      name: Joi.string(),
+      email: Joi.string(),
+      phone: Joi.string(),
+      avatar: Joi.string(),
+      code: Joi.string(),
+      codeValid: Joi.boolean(),
+    },
+  },
+}
+
 export const createUser = async (req, res, next) => {
-  const { title, description, price, image } = req.body
-  const newUser = new User({ title, description, price, image })
+  const { providerId, provider, name, email, phone, avatar, code, codeValid } = req.body
+  const newUser = new User({ providerId, provider, name, email, phone, avatar, code, codeValid })
 
   try {
     return res

@@ -3,11 +3,11 @@ import mongoose, { Schema } from 'mongoose'
 const UserSchema = new Schema({
   providerId: {
     type: String,
-    required: true,
+    required: [true, 'providerId is required'],
   },
   provider: {
     type: String,
-    required: true,
+    required: [true, 'provider is required'],
   },
   name: {
     type: String,

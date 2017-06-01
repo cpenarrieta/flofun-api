@@ -18,8 +18,8 @@ const jwtStrategy = new Strategy(jwtOpts, async (payload, done) => {
     } else {
       done(null, false)
     }
-  } catch (e) {
-    return done(e, false)
+  } catch (err) {
+    return done(err, false)
   }
 })
 

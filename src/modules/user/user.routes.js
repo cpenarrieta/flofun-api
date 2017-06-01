@@ -1,4 +1,5 @@
 import { Router } from 'express'
+import validate from 'express-validation'
 
 import * as UserController from './user.controller'
 import * as AuthController from './auth.controller'
@@ -8,7 +9,10 @@ const routes = new Router()
 
 routes.route('/user')
   .get(UserController.getAllUsers)
-  .post(UserController.createUser)
+  .post(
+    validate(UserController.validation.createUser),
+    UserController.createUser,
+  )
 
 routes.route('/me')
   .post(requireJwtAuth, UserController.me)

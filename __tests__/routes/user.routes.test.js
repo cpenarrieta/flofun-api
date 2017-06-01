@@ -8,7 +8,6 @@ const ENDPOINT = '/api/user'
 
 describe(`POST ${ENDPOINT}`, () => {
   before(async () => {
-    await User.remove()
     await User.insertMany(UserSeed.list())
   })
 
@@ -20,5 +19,9 @@ describe(`POST ${ENDPOINT}`, () => {
       expect(body.users.length).to.equal(10)
       done()
     })
+  })
+
+  afterEach(async () => {
+    await User.remove()
   })
 })
