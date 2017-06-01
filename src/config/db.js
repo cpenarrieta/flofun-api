@@ -12,9 +12,7 @@ try {
   mongoose.createConnection(config.DB_URL)
 }
 
-mongoose.connection
-  .once('open', () => console.log('mongoose running'))
-  .on('error', err => {
-    console.error(err)
-    throw err
-  })
+mongoose.connection.once('open', () => console.log('mongoose running')).on('error', err => {
+  console.error(err)
+  throw err
+})

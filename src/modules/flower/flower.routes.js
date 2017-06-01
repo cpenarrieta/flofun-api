@@ -5,7 +5,8 @@ import { requireJwtAuth } from '../auth/requireJwtAuth'
 
 const routes = new Router()
 
-routes.route('/flower')
+routes
+  .route('/flower')
   .get(requireJwtAuth, FlowerController.getAllFlower)
   .post(requireJwtAuth, FlowerController.createFlower)
 

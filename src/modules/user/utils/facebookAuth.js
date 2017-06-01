@@ -4,7 +4,9 @@ import { getUserInfo } from './getUserInfo'
 
 export async function facebookAuth(token) {
   try {
-    const { data } = await axios.get(`https://graph.facebook.com/me?fields=email,name,picture&access_token=${token}`)
+    const { data } = await axios.get(
+      `https://graph.facebook.com/me?fields=email,name,picture&access_token=${token}`,
+    )
     return getUserInfo(data, 'facebook')
   } catch (err) {
     throw new Error('error with facebook auth')

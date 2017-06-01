@@ -22,9 +22,7 @@ export const createUser = async (req, res, next) => {
   const newUser = new User({ providerId, provider, name, email, phone, avatar, code, codeValid })
 
   try {
-    return res
-      .status(201)
-      .json({ user: await newUser.save() })
+    return res.status(201).json({ user: await newUser.save() })
   } catch (err) {
     err.status = 400
     return next(err)
@@ -33,17 +31,15 @@ export const createUser = async (req, res, next) => {
 
 export const getAllUsers = async (req, res, next) => {
   try {
-    return res
-      .status(200)
-      .json({ users: await User.find({}) })
+    return res.status(200).json({ users: await User.find({}) })
   } catch (err) {
     err.status = 400
     return next(err)
   }
 }
 
-export const me = (req, res) => res.status(200)
-  .json({
+export const me = (req, res) =>
+  res.status(200).json({
     _id: req.user._id,
     name: req.user.name,
     avatar: req.user.avatar,

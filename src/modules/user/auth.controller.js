@@ -42,7 +42,7 @@ export const authPhone = async (req, res, next) => {
   }
 
   const phone = String(req.body.phone).replace(/[^\d]/g, '')
-  const code = Math.floor((Math.random() * 8999 + 1000)) // eslint-disable-line
+  const code = Math.floor(Math.random() * 8999 + 1000) // eslint-disable-line
 
   try {
     let user = await User.findOne({

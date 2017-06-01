@@ -1,21 +1,24 @@
 import mongoose, { Schema } from 'mongoose'
 
-const FlowerSchema = new Schema({
-  title: {
-    type: String,
-    required: true,
+const FlowerSchema = new Schema(
+  {
+    title: {
+      type: String,
+      required: true,
+    },
+    description: {
+      type: String,
+    },
+    price: {
+      type: Number,
+      required: true,
+    },
+    image: {
+      type: String,
+      default: '',
+    },
   },
-  description: {
-    type: String,
-  },
-  price: {
-    type: Number,
-    required: true,
-  },
-  image: {
-    type: String,
-    default: '',
-  },
-}, { timestamps: true })
+  { timestamps: true },
+)
 
 export default mongoose.model('Flower', FlowerSchema)

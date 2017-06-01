@@ -1,14 +1,8 @@
-const devConfig = {
+const devConfig = {}
 
-}
+const testConfig = {}
 
-const testConfig = {
-
-}
-
-const prodConfig = {
-
-}
+const prodConfig = {}
 
 function envConfig(env) {
   switch (env) {

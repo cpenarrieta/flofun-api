@@ -11,11 +11,7 @@ class ExtendableError extends Error {
 }
 
 class APIError extends ExtendableError {
-  constructor(
-    message,
-    status = 500,
-    isPublic = false,
-  ) {
+  constructor(message, status = 500, isPublic = false) {
     super(message, status, isPublic)
   }
 }

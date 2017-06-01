@@ -9,11 +9,7 @@ const isDev = process.env.NODE_ENV === 'development'
 
 export default function logErrorService(err, req, res, next) {
   if (!err) {
-    return new APIError(
-      'Error with the server!',
-      500,
-      true,
-    )
+    return new APIError('Error with the server!', 500, true)
   }
 
   if (isProd) {

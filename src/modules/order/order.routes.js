@@ -5,7 +5,8 @@ import { requireJwtAuth } from '../auth/requireJwtAuth'
 
 const routes = new Router()
 
-routes.route('/order')
+routes
+  .route('/order')
   .get(requireJwtAuth, OrderController.getAllOrders)
   .post(requireJwtAuth, OrderController.createOrder)
 

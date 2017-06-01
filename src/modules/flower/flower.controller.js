@@ -5,9 +5,7 @@ export const createFlower = async (req, res, next) => {
   const newFlower = new Flower({ title, description, price, image })
 
   try {
-    return res
-      .status(201)
-      .json({ flower: await newFlower.save() })
+    return res.status(201).json({ flower: await newFlower.save() })
   } catch (err) {
     err.status = 400
     return next(err)
@@ -16,9 +14,7 @@ export const createFlower = async (req, res, next) => {
 
 export const getAllFlower = async (req, res, next) => {
   try {
-    return res
-      .status(200)
-      .json({ flowers: await Flower.find({}) })
+    return res.status(200).json({ flowers: await Flower.find({}) })
   } catch (err) {
     err.status = 400
     return next(err)

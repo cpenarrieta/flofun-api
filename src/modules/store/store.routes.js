@@ -5,7 +5,8 @@ import { requireJwtAuth } from '../auth/requireJwtAuth'
 
 const routes = new Router()
 
-routes.route('/store')
+routes
+  .route('/store')
   .get(requireJwtAuth, StoreController.getAllStores)
   .post(requireJwtAuth, StoreController.createStore)
 
