@@ -43,4 +43,4 @@ jspm_packages
 
 dist
 
-src/config/secrets.js
+.env

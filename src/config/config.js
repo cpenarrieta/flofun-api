@@ -1,5 +1,3 @@
-import secrets from './secrets'
-
 const devConfig = {
 
 }
@@ -27,13 +25,14 @@ function envConfig(env) {
 
 const config = {
   PORT: process.env.PORT || 8080,
-  DB_URL: process.env.DB_URL || 'mongodb://localhost/flofun',
+  DB_URL: process.env.DB_URL,
   MONGOOSE_DEBUG: true,
-  JWT_SECRET: process.env.JWT_SECRET || secrets.JWT_SECRET,
+  RAVEN_ID: process.env.RAVEN_ID,
+  JWT_SECRET: process.env.JWT_SECRET,
   twilio: {
-    accountSid: process.env.TWILIO_SID || secrets.accountSid,
-    authToken: process.env.TWILIO_TOKEN || secrets.authToken,
-    twilioPhone: process.env.TWILIO_PHONE || secrets.twilioPhone,
+    accountSid: process.env.TWILIO_SID,
+    authToken: process.env.TWILIO_TOKEN,
+    twilioPhone: process.env.TWILIO_PHONE,
   },
 }
 

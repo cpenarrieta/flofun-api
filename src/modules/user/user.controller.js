@@ -1,6 +1,6 @@
 import User from './user.model'
 
-export const createUser = async (req, res) => {
+export const createUser = async (req, res, next) => {
   const { title, description, price, image } = req.body
   const newUser = new User({ title, description, price, image })
 
@@ -8,22 +8,20 @@ export const createUser = async (req, res) => {
     return res
       .status(201)
       .json({ user: await newUser.save() })
-  } catch (e) {
-    return res
-      .status(e.status)
-      .json({ error: true, message: 'error creating user' })
+  } catch (err) {
+    err.status = 400
+    return next(err)
   }
 }
 
-export const getAllUsers = async (req, res) => {
+export const getAllUsers = async (req, res, next) => {
   try {
     return res
       .status(200)
       .json({ users: await User.find({}) })
-  } catch (e) {
-    return res
-      .status(e.status)
-      .json({ error: true, message: 'error getAllUser' })
+  } catch (err) {
+    err.status = 400
+    return next(err)
   }
 }
 

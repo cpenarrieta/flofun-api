@@ -5,11 +5,11 @@ import { googleAuth } from './utils/googleAuth'
 import config from '../../config/config'
 import twilio from '../../config/twilio'
 
-export const authFacebook = async (req, res) => auth(req.body.token, res, facebookAuth)
+export const authFacebook = async (req, res, next) => auth(req.body.token, res, facebookAuth, next)
 
-export const authGoogle = async (req, res) => auth(req.body.token, res, googleAuth)
+export const authGoogle = async (req, res, next) => auth(req.body.token, res, googleAuth, next)
 
-const auth = async (token, res, callback) => {
+const auth = async (token, res, callback, next) => {
   try {
     const userInfo = await callback(token)
     let user = await User.findOne({
@@ -31,11 +31,12 @@ const auth = async (token, res, callback) => {
       token: `JWT ${createToken(user)}`,
     })
   } catch (err) {
-    return res.status(400).json({ error: true, errorMessage: err.message })
+    err.status = 400
+    return next(err)
   }
 }
 
-export const authPhone = async (req, res) => {
+export const authPhone = async (req, res, next) => {
   if (!req.body.phone) {
     return res.status(422).send({ error: 'You must provide a phone number' })
   }
@@ -65,11 +66,12 @@ export const authPhone = async (req, res) => {
 
     res.send({ success: true })
   } catch (err) {
-    return res.status(400).json({ error: true, errorMessage: err.message })
+    err.status = 400
+    return next(err)
   }
 }
 
-export const validateCode = async (req, res) => {
+export const validateCode = async (req, res, next) => {
   if (!req.body.phone || !req.body.code) {
     return res.status(422).send({ error: 'Phone and Code must be provided' })
   }
@@ -104,6 +106,7 @@ export const validateCode = async (req, res) => {
       token: `JWT ${createToken(user)}`,
     })
   } catch (err) {
-    return res.status(400).json({ error: true, errorMessage: err.message })
+    err.status = 400
+    return next(err)
   }
 }

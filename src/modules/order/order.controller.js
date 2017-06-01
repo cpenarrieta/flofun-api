@@ -1,6 +1,6 @@
 import Order from './order.model'
 
-export const createOrder = async (req, res) => {
+export const createOrder = async (req, res, next) => {
   const { title, description, price, image } = req.body
   const newOrder = new Order({ title, description, price, image })
 
@@ -8,21 +8,19 @@ export const createOrder = async (req, res) => {
     return res
       .status(201)
       .json({ order: await newOrder.save() })
-  } catch (e) {
-    return res
-      .status(e.status)
-      .json({ error: true, message: 'error creating order' })
+  } catch (err) {
+    err.status = 400
+    return next(err)
   }
 }
 
-export const getAllOrders = async (req, res) => {
+export const getAllOrders = async (req, res, next) => {
   try {
     return res
       .status(200)
       .json({ orders: await Order.find({}) })
-  } catch (e) {
-    return res
-      .status(e.status)
-      .json({ error: true, message: 'error getAllOrder' })
+  } catch (err) {
+    err.status = 400
+    return next(err)
   }
 }

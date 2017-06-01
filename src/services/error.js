@@ -1,0 +1,33 @@
+class ExtendableError extends Error {
+  constructor(message, status, isPublic) {
+    super(message)
+    this.name = this.constructor.name
+    this.message = message
+    this.status = status
+    this.isPublic = isPublic
+    this.isOperational = true
+    Error.captureStackTrace(this, this.constructor.name)
+  }
+}
+
+class APIError extends ExtendableError {
+  constructor(
+    message,
+    status = 500,
+    isPublic = false,
+  ) {
+    super(message, status, isPublic)
+  }
+}
+
+export default APIError
+
+export class RequiredError {
+  static makePretty(errors) {
+    return errors.reduce((obj, error) => {
+      const nObj = obj
+      nObj[error.field] = error.messages[0].replace(/"/g, '')
+      return nObj
+    }, {})
+  }
+}

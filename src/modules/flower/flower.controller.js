@@ -1,6 +1,6 @@
 import Flower from './flower.model'
 
-export const createFlower = async (req, res) => {
+export const createFlower = async (req, res, next) => {
   const { title, description, price, image } = req.body
   const newFlower = new Flower({ title, description, price, image })
 
@@ -8,21 +8,19 @@ export const createFlower = async (req, res) => {
     return res
       .status(201)
       .json({ flower: await newFlower.save() })
-  } catch (e) {
-    return res
-      .status(e.status)
-      .json({ error: true, message: 'error creating flower' })
+  } catch (err) {
+    err.status = 400
+    return next(err)
   }
 }
 
-export const getAllFlower = async (req, res) => {
+export const getAllFlower = async (req, res, next) => {
   try {
     return res
       .status(200)
       .json({ flowers: await Flower.find({}) })
-  } catch (e) {
-    return res
-      .status(e.status)
-      .json({ error: true, message: 'error getAllFlower' })
+  } catch (err) {
+    err.status = 400
+    return next(err)
   }
 }

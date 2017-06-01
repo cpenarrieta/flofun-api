@@ -1,13 +1,17 @@
 import express from 'express'
+import './config/env'
 import './config/db'
 import config from './config/config'
 import middlewareConfig from './config/middleware'
+import logErrorService from './services/log'
+import APIError from './services/error'
 import {
   FlowerRoutes,
   OrderRoutes,
   UserRoutes,
   StoreRoutes,
 } from './modules'
+
 
 const app = express()
 
@@ -19,6 +23,12 @@ app.use('/api', [
   UserRoutes,
   StoreRoutes,
 ])
+
+app.all('*', (req, res, next) =>
+  next(new APIError('Not Found!', 400, true)),
+)
+
+app.use(logErrorService)
 
 if (!module.parent) {
   /* eslint-disable no-console */

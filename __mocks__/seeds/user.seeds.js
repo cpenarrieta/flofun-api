@@ -13,7 +13,7 @@ class UserSeed {
   }
 
   list(attrs, count = 10) {
-    const users = [];
+    const users = []
 
     Array.from({ length: count }).map(() => {
       const fakeUser = {
@@ -21,7 +21,7 @@ class UserSeed {
         email: faker.internet.email(),
         providerId: faker.random.number().toString(),
         provider: 'facebook',
-      };
+      }
       return users.push(fakeUser)
     })
 
