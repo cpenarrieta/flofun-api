@@ -14,9 +14,17 @@ routes
 
 routes.route('/me').post(requireJwtAuth, UserController.me)
 
-routes.route('/auth/facebook').post(AuthController.authFacebook)
-routes.route('/auth/google').post(AuthController.authGoogle)
-routes.route('/auth/phone').post(AuthController.authPhone)
-routes.route('/auth/validateCode').post(AuthController.validateCode)
+routes
+  .route('/auth/facebook')
+  .post(validate(UserController.validation.auth), AuthController.authFacebook)
+routes
+  .route('/auth/google')
+  .post(validate(UserController.validation.auth), AuthController.authGoogle)
+routes
+  .route('/auth/phone')
+  .post(validate(UserController.validation.authPhone), AuthController.authPhone)
+routes
+  .route('/auth/validateCode')
+  .post(validate(UserController.validation.validateCode), AuthController.validateCode)
 
 export default routes

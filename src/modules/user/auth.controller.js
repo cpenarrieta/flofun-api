@@ -1,9 +1,30 @@
+import Joi from 'joi'
+
 import User from './user.model'
 import { createToken } from '../auth/createToken'
 import { facebookAuth } from './utils/facebookAuth'
 import { googleAuth } from './utils/googleAuth'
 import config from '../../config/config'
 import twilio from '../../config/twilio'
+
+export const validation = {
+  authPhone: {
+    body: {
+      phone: Joi.string().required(),
+    },
+  },
+  auth: {
+    body: {
+      token: Joi.string().required(),
+    },
+  },
+  validateCode: {
+    body: {
+      phone: Joi.string().required(),
+      code: Joi.string().length(4).required(),
+    },
+  },
+}
 
 export const authFacebook = async (req, res, next) => auth(req.body.token, res, facebookAuth, next)
 
@@ -37,10 +58,6 @@ const auth = async (token, res, callback, next) => {
 }
 
 export const authPhone = async (req, res, next) => {
-  if (!req.body.phone) {
-    return res.status(422).send({ error: 'You must provide a phone number' })
-  }
-
   const phone = String(req.body.phone).replace(/[^\d]/g, '')
   const code = Math.floor(Math.random() * 8999 + 1000) // eslint-disable-line
 
@@ -72,10 +89,6 @@ export const authPhone = async (req, res, next) => {
 }
 
 export const validateCode = async (req, res, next) => {
-  if (!req.body.phone || !req.body.code) {
-    return res.status(422).send({ error: 'Phone and Code must be provided' })
-  }
-
   const phone = String(req.body.phone).replace(/[^\d]/g, '')
   const code = parseInt(req.body.code, 10)
 
