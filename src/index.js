@@ -26,7 +26,7 @@ if (!module.parent) {
       console.log(`
         ☄️  🌟
         Server running on port: ${config.PORT}
-        Running on ${process.env.NODE_ENV}
+        Running on ${config.NODE_ENV}
         ☄️  🌟
       `)
     }

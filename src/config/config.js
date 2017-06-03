@@ -18,6 +18,7 @@ function envConfig(env) {
 }
 
 const config = {
+  NODE_ENV: process.env.NODE_ENV || 'development',
   PORT: process.env.PORT || 8080,
   DB_URL: process.env.DB_URL,
   MONGOOSE_DEBUG: true,
