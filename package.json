@@ -12,7 +12,14 @@
     "lint": "eslint src",
     "lint:fix": "eslint --fix src",
     "test": "NODE_ENV=test mocha $(find __tests__ -name *.test.js) --colors --compilers js:babel-register",
-    "prettier": "prettier --no-semi --single-quote --print-width 100 --trailing-comma all --write '{src,__{tests,mocks}__}/**/*.js'"
+    "prettier": "prettier --no-semi --single-quote --print-width 100 --trailing-comma all --write '{src,__{tests,mocks}__}/**/*.js'",
+    "precommit": "lint-staged"
+  },
+  "lint-staged": {
+    "*.js": [
+      "prettier --no-semi --single-quote --print-width 100 --trailing-comma all --write",
+      "git add"
+    ]
   },
   "dependencies": {
     "axios": "0.16.2",
