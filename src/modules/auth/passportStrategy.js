@@ -5,7 +5,7 @@ import User from '../../modules/user/user.model'
 import config from '../../config/config'
 
 const jwtOpts = {
-  jwtFromRequest: ExtractJwt.fromAuthHeader('Authorization'),
+  jwtFromRequest: ExtractJwt.fromAuthHeaderAsBearerToken('Authorization'),
   secretOrKey: config.JWT_SECRET,
 }
 
